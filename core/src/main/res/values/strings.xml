@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MaNews App</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_search">Search</string>
+    <string name="title_setting">Setting</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="notification_news">News Notification</string>
+    <string name="new_news">Search news</string>
+    <string name="news_image">news image</string>
+    <string name="open_in_browser">Open In Browser</string>
+    <string name="something_wrong">Something Got Wrong!</string>
+    <string name="no_data">Empty Data !!</string>
+    <string name="detail">Detail</string>
+</resources>

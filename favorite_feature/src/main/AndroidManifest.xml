@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.coding.manewsapp.feature.favorite">
+
+    <application
+        android:label="Favorite Feature">
+        <activity
+            android:name="com.coding.favorite_feature.ui.FavoriteActivity"
+            android:label="Favorite Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
