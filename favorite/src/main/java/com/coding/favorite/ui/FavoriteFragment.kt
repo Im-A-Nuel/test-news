@@ -1,4 +1,4 @@
-package com.coding.favorite_feature.ui.favorite
+package com.coding.favorite.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.coding.core.navigation.NavigationProvider
 import com.coding.core.ui.NewsAdapter
 import com.coding.core.utils.DataMapper
+import com.coding.favorite.di.favoriteModule
 import com.coding.favorite_feature.databinding.FragmentFavoriteBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.GlobalContext.startKoin
 import org.koin.core.parameter.parametersOf
 
 class FavoriteFragment : Fragment() {
@@ -31,6 +33,9 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+        startKoin {
+            modules(favoriteModule)
+        }
         return binding.root
     }
 

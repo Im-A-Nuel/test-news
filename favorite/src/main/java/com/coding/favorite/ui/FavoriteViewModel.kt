@@ -1,4 +1,4 @@
-package com.coding.favorite_feature.ui.favorite
+package com.coding.favorite.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

@@ -25,4 +25,4 @@ dependencyResolutionManagement {
 rootProject.name = "MaNews App"
 include(":app")
 include(":core")
-include(":favorite_feature")
+include(":favorite")

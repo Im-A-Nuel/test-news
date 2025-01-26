@@ -18,15 +18,15 @@
             app:destination="@id/navigation_setting" />
     </fragment>
 
-    <fragment
-        android:id="@+id/navigation_favorite"
-        android:name="com.coding.favorite_feature.ui.favorite.FavoriteFragment"
-        android:label="@string/title_favorite"
-        tools:layout="@layout/fragment_favorite" >
-        <action
-            android:id="@+id/action_navigation_favorite_to_detailFragment"
-            app:destination="@id/detailFragment" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_favorite"-->
+<!--        android:name="com.coding.favorite.ui.favorite.FavoriteFragment"-->
+<!--        android:label="@string/title_favorite"-->
+<!--        tools:layout="@layout/fragment_favorite" >-->
+<!--&lt;!&ndash;        <action&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/action_navigation_favorite_to_detailFragment"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:destination="@id/detailFragment" />&ndash;&gt;-->
+<!--    </fragment>-->
 
     <fragment
         android:id="@+id/navigation_search"
@@ -52,7 +52,5 @@
             android:name="news"
             app:argType="com.coding.core.data.source.local.entity.NewsEntity"
             app:nullable="false" />
-        <deepLink
-            app:uri="myapp://detail" />
     </fragment>
 </navigation>

@@ -13,4 +13,5 @@
     <string name="something_wrong">Something Got Wrong!</string>
     <string name="no_data">Empty Data !!</string>
     <string name="detail">Detail</string>
+      <string name="title_dynamicfeature">Module Title</string>
 </resources>

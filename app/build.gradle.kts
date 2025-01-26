@@ -39,12 +39,10 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
-//    dynamicFeatures.add(":favorite_feature")
+    dynamicFeatures += setOf(":favorite")
 
 }
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":favorite_feature"))
 }
