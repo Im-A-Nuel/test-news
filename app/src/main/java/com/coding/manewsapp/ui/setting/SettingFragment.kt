@@ -1,52 +1,70 @@
 package com.coding.manewsapp.ui.setting
 
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import android.view.*
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.coding.manewsapp.databinding.FragmentSettingBinding
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 
 class SettingFragment : Fragment() {
 
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
+    private lateinit var settingPreferences: SettingPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true) // Enable options menu
+        setHasOptionsMenu(true)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPref = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        settingPreferences = SettingPreferences.getInstance(requireContext())
 
-        // Set initial states based on preferences
-        val isNightMode = sharedPref.getBoolean("night_mode", false)
-        val isNewsNotificationEnabled = sharedPref.getBoolean("news_notification", true)
+        lifecycleScope.launch {
+            settingPreferences.getThemeSetting().collect { isNightMode ->
+                binding.switchTheme.isChecked = isNightMode
+                setNightMode(isNightMode)
+            }
 
-        binding.switchTheme.isChecked = isNightMode
-        binding.switchReminder.isChecked = isNewsNotificationEnabled
-
-        // Night Mode Switch Listener
-        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
-            sharedPref.edit().putBoolean("night_mode", isChecked).apply()
-            setNightMode(isChecked)
+            settingPreferences.getNotificationSetting().collect { isNewsNotificationEnabled ->
+                binding.switchReminder.isChecked = isNewsNotificationEnabled
+                if (isNewsNotificationEnabled) {
+                    schedulePeriodicWork()
+                } else {
+                    cancelPeriodicWork()
+                }
+            }
         }
 
-        // News Notification Switch Listener
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            lifecycleScope.launch {
+                settingPreferences.saveThemeSetting(isChecked)
+                setNightMode(isChecked)
+            }
+        }
+
         binding.switchReminder.setOnCheckedChangeListener { _, isChecked ->
-            sharedPref.edit().putBoolean("news_notification", isChecked).apply()
-            setNewsNotification(isChecked)
+            lifecycleScope.launch {
+                settingPreferences.saveNotificationSetting(isChecked)
+                if (isChecked) {
+                    schedulePeriodicWork()
+                } else {
+                    cancelPeriodicWork()
+                }
+            }
         }
     }
 
@@ -58,12 +76,21 @@ class SettingFragment : Fragment() {
         }
     }
 
-    private fun setNewsNotification(isEnabled: Boolean) {
-        if (isEnabled) {
-            // Code to enable notifications (if you use Firebase or WorkManager)
-        } else {
-            // Code to disable notifications
-        }
+    private fun schedulePeriodicWork() {
+        val periodicWorkRequest = PeriodicWorkRequest.Builder(
+            NewsNotificationWorker::class.java,
+            2, TimeUnit.HOURS
+        ).build()
+
+        WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
+            "news_notification_work",
+            ExistingPeriodicWorkPolicy.UPDATE,
+            periodicWorkRequest
+        )
+    }
+
+    private fun cancelPeriodicWork() {
+        WorkManager.getInstance(requireContext()).cancelUniqueWork("news_notification_work")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

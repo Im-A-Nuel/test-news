@@ -20,7 +20,7 @@ class NewsEntity(
     val urlToImage: String? = null,
 
     @field:ColumnInfo("description")
-    val description: String = "",
+    val description: String? = null,
 
     @field:ColumnInfo(name = "url")
     val url: String? = null,

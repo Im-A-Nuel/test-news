@@ -4,17 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.coding.manewsapp.ui.favorite.FavoriteActivity">
+    tools:context="com.coding.favorite.ui.FavoriteActivity">
 
 
 <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_news"
-        android:layout_width="match_parent"
+    android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_list_news" />
 
     <ProgressBar
-        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +21,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/view_empty"
         layout="@layout/view_empty"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

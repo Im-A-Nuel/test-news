@@ -12,5 +12,7 @@
     <string name="open_in_browser">Open In Browser</string>
     <string name="something_wrong">Something Got Wrong!</string>
     <string name="no_data">Empty Data !!</string>
-    <string name="detail">Detail</string>
+    <string name="image_news">image_news</string>
+    <string name="news_title_here">News Title Here</string>
+    <string name="date_here">Date Here</string>
 </resources>

@@ -3,4 +3,21 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="placeholder">#6FB6B6B6</color>
+
+    <!-- Primary colors -->
+    <color name="colorPrimary">#6200EE</color> <!-- Ungu untuk tema terang -->
+    <color name="colorPrimaryDark">#3700B3</color> <!-- Ungu gelap -->
+    <color name="colorAccent">#03DAC5</color> <!-- Teal -->
+
+    <!-- Text colors -->
+    <color name="text_color_primary">#000000</color> <!-- Hitam untuk tema terang -->
+    <!-- Putih untuk tema malam -->
+
+    <!-- Background colors -->
+    <color name="background_color">#FFFFFF</color> <!-- Putih untuk tema terang -->
+    <!-- Hitam untuk tema malam -->
+
+    <!-- Additional colors -->
+    <!-- Merah untuk kesalahan -->
+    <!-- Warna pemisah -->
 </resources>

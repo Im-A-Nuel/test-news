@@ -5,25 +5,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.coding.core.data.Resource
-import com.coding.core.data.source.local.entity.NewsEntity
+import com.coding.core.domain.model.News
 import com.coding.core.domain.usecase.NewsUseCase
-import com.coding.core.utils.DataMapper
 import kotlinx.coroutines.flow.map
 
 class HomeViewModel(newsUseCase: NewsUseCase) : ViewModel() {
 
-    val news: LiveData<Resource<List<NewsEntity>>> = newsUseCase.getAllNews()
+    val news: LiveData<Resource<List<News>>> = newsUseCase.getAllNews()
         .map { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    val entities =
-                        resource.data?.let { DataMapper.mapDomainToEntityList(it) } ?: emptyList()
-                    Resource.Success(entities)
+                    val domainList = resource.data ?: emptyList()
+                    Resource.Success(domainList)
                 }
 
                 is Resource.Loading -> Resource.Loading()
-                is Resource.Error -> Resource.Error("Error")
+                is Resource.Error -> Resource.Error(resource.message ?: "Error")
             }
         }
         .asLiveData()
 }
+

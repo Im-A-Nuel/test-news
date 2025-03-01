@@ -8,7 +8,7 @@ class News(
     val title: String,
     val publishedAt: String,
     val urlToImage: String? = null,
-    val description: String,
+    val description: String? = null,
     val url: String? = null,
     var isFavorite: Boolean = false
-): Parcelable
+) : Parcelable

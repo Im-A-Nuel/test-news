@@ -2,18 +2,17 @@ package com.coding.manewsapp.ui.setting
 
 import android.content.Context
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class SettingPreferences private constructor(private val dataStore: DataStore<Preferences>) {
 
-    private val keyTheme = booleanPreferencesKey("theme_Setting")
+    private val keyTheme = booleanPreferencesKey("theme_setting")
+    private val keyNotification = booleanPreferencesKey("news_notification")
 
     fun getThemeSetting(): Flow<Boolean> {
         return dataStore.data.map { preferences ->
@@ -27,13 +26,25 @@ class SettingPreferences private constructor(private val dataStore: DataStore<Pr
         }
     }
 
+    fun getNotificationSetting(): Flow<Boolean> {
+        return dataStore.data.map { preferences ->
+            preferences[keyNotification] ?: true
+        }
+    }
+
+    suspend fun saveNotificationSetting(isEnabled: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[keyNotification] = isEnabled
+        }
+    }
+
     companion object {
         @Volatile
         private var INSTANCE: SettingPreferences? = null
 
-        fun getInstance(dataStore: DataStore<Preferences>): SettingPreferences {
+        fun getInstance(context: Context): SettingPreferences {
             return INSTANCE ?: synchronized(this) {
-                val instance = SettingPreferences(dataStore)
+                val instance = SettingPreferences(context.dataStore)
                 INSTANCE = instance
                 instance
             }

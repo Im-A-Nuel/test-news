@@ -13,7 +13,7 @@ object DataMapper {
                 title = it.title,
                 publishedAt = it.publishedAt,
                 urlToImage = it.urlToImage,
-                description = it.description ?: "",
+                description = it.description,
                 url = it.url,
                 isFavorite = false
             )
@@ -35,17 +35,6 @@ object DataMapper {
             )
         }
 
-    fun mapEntityToDomain(newsEntity: NewsEntity): News {
-        return News(
-            title = newsEntity.title,
-            publishedAt = newsEntity.publishedAt,
-            urlToImage = newsEntity.urlToImage,
-            description = newsEntity.description,
-            url = newsEntity.url,
-            isFavorite = newsEntity.isFavorite
-        )
-    }
-
     fun mapDomainToEntity(input: News) = NewsEntity(
         title = input.title,
         publishedAt = input.publishedAt,
@@ -54,18 +43,5 @@ object DataMapper {
         url = input.url,
         isFavorite = input.isFavorite
     )
-
-    fun mapDomainToEntityList(input: List<News>): List<NewsEntity> {
-        return input.map {
-            NewsEntity(
-                title = it.title,
-                publishedAt = it.publishedAt,
-                urlToImage = it.urlToImage,
-                description = it.description,
-                url = it.url,
-                isFavorite = it.isFavorite
-            )
-        }
-    }
 
 }

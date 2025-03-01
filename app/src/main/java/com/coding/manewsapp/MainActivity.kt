@@ -36,24 +36,34 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.navigation_favorite -> {
                     if (isFavoriteActivityAvailable()) {
-                        startActivity(Intent(this, Class.forName("com.coding.favorite.ui.favorite.FavoriteActivity")))
+                        startActivity(
+                            Intent(
+                                this,
+                                Class.forName("com.coding.favorite.ui.FavoriteActivity")
+                            )
+                        )
                     } else {
-                        Toast.makeText(this, "Modul Favorite tidak tersedia", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Modul Favorite tidak tersedia", Toast.LENGTH_SHORT)
+                            .show()
                     }
                     true
                 }
+
                 R.id.navigation_home -> {
                     navController.navigate(R.id.navigation_home)
                     true
                 }
+
                 R.id.navigation_search -> {
                     navController.navigate(R.id.navigation_search)
                     true
                 }
+
                 R.id.navigation_setting -> {
                     navController.navigate(R.id.navigation_setting)
                     true
                 }
+
                 else -> false
             }
         }
@@ -61,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun isFavoriteActivityAvailable(): Boolean {
         return try {
-            Class.forName("com.coding.favorite.ui.favorite.FavoriteActivity")
+            Class.forName("com.coding.favorite.ui.FavoriteActivity")
             true
         } catch (e: ClassNotFoundException) {
             false

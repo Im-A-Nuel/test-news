@@ -8,12 +8,11 @@ plugins {
 
 android {
     namespace = "com.coding.manewsapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.coding.manewsapp"
         minSdk = 24
-        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -38,6 +37,11 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
+    }
+    defaultConfig {
+        buildConfigField("String", "API_KEY", "\"d3f3c8cdeeed43ce9afc62163015968b\"")
+
     }
     dynamicFeatures += setOf(":favorite")
 
@@ -45,4 +49,14 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(libs.material)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.activity)
+
+    implementation(libs.androidx.work.runtime.ktx)
+
 }
+

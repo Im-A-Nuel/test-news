@@ -23,7 +23,6 @@ class RemoteDataSource(private val apiService: ApiService) {
                 }
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", "Error fetching news: ${e.message}", e)
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -46,7 +45,7 @@ class RemoteDataSource(private val apiService: ApiService) {
     }
 
     companion object {
-        val API_KEY = "d3f3c8cdeeed43ce9afc62163015968b"
+        const val API_KEY = ""
     }
 }
 

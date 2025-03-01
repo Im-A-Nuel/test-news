@@ -16,7 +16,7 @@
             android:id="@+id/newsImage"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:contentDescription="image_news"
+            android:contentDescription="@string/image_news"
             android:scaleType="centerCrop"
             android:src="@android:drawable/ic_menu_report_image" />
 
@@ -27,8 +27,7 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="News Title Here"
-            android:textColor="@android:color/black"
+            android:text="@string/news_title_here"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -37,8 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Date Here"
-            android:textColor="@android:color/darker_gray"
+            android:text="@string/date_here"
             android:textSize="14sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

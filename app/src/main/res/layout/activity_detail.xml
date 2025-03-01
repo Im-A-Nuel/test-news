@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context="com.coding.manewsapp.ui.detail.DetailActivity">
 
     <ImageView
         android:id="@+id/newsImage"
@@ -12,9 +13,9 @@
         android:layout_height="200dp"
         android:contentDescription="@string/news_image"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Judul berita -->
     <TextView
@@ -23,11 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textAppearance="?attr/textAppearanceHeadline6"
-        android:textColor="@android:color/black"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/newsImage"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/newsImage" />
 
     <!-- Tanggal berita -->
     <TextView
@@ -36,10 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/newsTitle"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/newsTitle" />
 
     <!-- Deskripsi berita -->
     <TextView
@@ -48,10 +49,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textAppearance="?attr/textAppearanceBody1"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/newsDate"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/newsDate" />
 
     <!-- Button untuk membuka URL berita -->
     <Button
@@ -61,19 +62,20 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/open_in_browser"
-        app:layout_constraintTop_toBottomOf="@id/newsDescription"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/newsDescription" />
 
     <ImageButton
         android:id="@+id/btnFavorite"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/favorite_icon_border"
-        android:background="@drawable/round_button_background"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/round_button_background"
+        android:contentDescription="@string/favoritebtn"
+        android:src="@drawable/favorite_icon_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

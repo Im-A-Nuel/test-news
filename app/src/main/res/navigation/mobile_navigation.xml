@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
     <fragment
@@ -11,46 +10,21 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_detailFragment"
-            app:destination="@id/detailFragment" />
-        <action
             android:id="@+id/action_navigation_home_to_navigation_setting"
             app:destination="@id/navigation_setting" />
     </fragment>
-
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_favorite"-->
-<!--        android:name="com.coding.favorite.ui.favorite.FavoriteFragment"-->
-<!--        android:label="@string/title_favorite"-->
-<!--        tools:layout="@layout/fragment_favorite" >-->
-<!--&lt;!&ndash;        <action&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/action_navigation_favorite_to_detailFragment"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:destination="@id/detailFragment" />&ndash;&gt;-->
-<!--    </fragment>-->
 
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.coding.manewsapp.ui.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_navigation_search_to_detailFragment"
-            app:destination="@id/detailFragment" />
     </fragment>
+    
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.coding.manewsapp.ui.setting.SettingFragment"
         android:label="Setting"
         tools:layout="@layout/fragment_setting" />
 
-    <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.coding.manewsapp.ui.detail.DetailFragment"
-        android:label="@string/detail"
-        tools:layout="@layout/fragment_detail">
-        <argument
-            android:name="news"
-            app:argType="com.coding.core.data.source.local.entity.NewsEntity"
-            app:nullable="false" />
-    </fragment>
 </navigation>
