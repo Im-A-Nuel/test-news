@@ -1,5 +1,5 @@
 *.iml
-#.gradle
+.gradle
 /local.properties
 /.idea/caches
 /.idea/libraries
@@ -48,8 +48,8 @@ replay_pid*
 
 ### Android template
 # Gradle files
-#.gradle/
-#build/
+.gradle/
+build/
 
 
 # Android Studio generated files and folders

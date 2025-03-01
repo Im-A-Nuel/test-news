@@ -20,6 +20,7 @@
         app:layout_constraintVertical_bias="0.026">
 
         <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/night_mode"
@@ -32,6 +33,7 @@
             app:layout_constraintVertical_bias="0.405" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchReminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/notification_news"
