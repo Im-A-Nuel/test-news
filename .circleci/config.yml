@@ -1,14 +1,14 @@
 version: 2.1
 
 orbs:
-  android: circleci/android@2.3.0  # Gunakan versi terbaru
+  android: circleci/android@2.3.0
 
 executors:
   android-executor:
     docker:
       - image: cimg/android:2023.04
     environment:
-      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64  # Pastikan menggunakan Java 17
+      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
 
       - run:
           name: Chmod permissions
-          command: chmod +x ./gradlew  # Tidak perlu sudo dalam environment CircleCI
+          command: chmod +x ./gradlew 
 
       - run:
           name: Download Dependencies
