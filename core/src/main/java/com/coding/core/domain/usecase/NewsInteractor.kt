@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.Flow
 class NewsInteractor(private val newsRepository: INewsRepository) : NewsUseCase {
     override fun getAllNews(): Flow<Resource<List<News>>> = newsRepository.getAllNews()
     override fun getFavoriteNews(): Flow<List<News>> = newsRepository.getFavoriteNews()
-    override fun setFavoriteNews(news: News, state: Boolean) =
-        newsRepository.setFavoriteNews(news, state)
+    override fun setFavoriteNews(tourism: News, state: Boolean) =
+        newsRepository.setFavoriteNews(tourism, state)
 
     override fun searchNews(query: String): Flow<List<News>> = newsRepository.searchNews(query)
 }

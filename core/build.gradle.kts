@@ -36,7 +36,11 @@ android {
         viewBinding = true
         buildConfig = true
     }
-    
+    defaultConfig {
+        buildConfigField("String", "API_KEY", "\"d3f3c8cdeeed43ce9afc62163015968b\"")
+
+    }
+
 }
 
 dependencies {
@@ -78,4 +82,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // database encryption
+    implementation(libs.android.database.sqlcipher)
+    implementation(libs.androidx.sqlite.ktx)
 }

@@ -43,10 +43,7 @@ android {
         viewBinding = true
         buildConfig = true
     }
-    defaultConfig {
-        buildConfigField("String", "API_KEY", "\"d3f3c8cdeeed43ce9afc62163015968b\"")
 
-    }
     dynamicFeatures += setOf(":favorite")
 
 }
