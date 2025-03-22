@@ -29,7 +29,12 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        val news = intent.getParcelableExtra<News>(NEWS) ?: return
+        val news = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(NEWS, News::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(NEWS)
+        } ?: return
 
         binding.newsTitle.text = news.title
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
